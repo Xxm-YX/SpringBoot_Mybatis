@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.entity.UserDO">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="TINYINT" property="age"/>
+        <result column="rest_day" jdbcType="VARCHAR" property="restDay"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="deleted" jdbcType="BIT" property="deleted"/>
+    </resultMap>
+
+    <insert id="insertUser">
+        INSERT INTO t_user (`name`, age, rest_day)
+        VALUES(#{name}, #{age}, #{restDay})
+    </insert>
+
+    <!-- VALUES(#{name, jdbcType=VARCHAR}, #{age, jdbcType=INTEGER}, #{restDay, jdbcType=VARCHAR})-->
+
+    <select id="selectUserById" resultType="com.example.entity.UserDO">
+        SELECT * FROM t_user WHERE id=#{id}
+    </select>
+</mapper>
