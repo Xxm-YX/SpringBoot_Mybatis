@@ -1,8 +1,12 @@
 package com.example.web.controller;
 
+import com.example.domain.User;
 import com.example.entity.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -22,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/postJson")
-    public  UserDTO postJson(@RequestBody UserDTO userDTO) {
+    public  UserDTO postJson(@RequestBody UserDTO userDTO,String a) {
         log.info(userDTO.toString());
         return userDTO;
     }
@@ -31,4 +35,11 @@ public class UserController {
     public String test(){
         return "aaa";
     }
+
+
+    @PostMapping("/aaa")
+    public String test1(User user, @RequestParam("files") List<MultipartFile> file){
+        return "vvv";
+    }
+
 }
